@@ -1,7 +1,7 @@
-dashcore-rpc-json
+bitcoincore-rpc-json
 ====================
 
-A collection of JSON-enabled data types used in the `dashcore-rpc` crate.
+A collection of JSON-enabled data types used in the `bitcoincore-rpc` crate.
 
 # License
 

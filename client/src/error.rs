@@ -10,9 +10,9 @@
 
 use std::{error, fmt, io};
 
-use dashcore;
-use dashcore::hashes::hex;
-use dashcore::secp256k1;
+use bitcoin;
+use bitcoin::hashes::hex;
+use bitcoin::secp256k1;
 use jsonrpc;
 use serde_json;
 
@@ -22,10 +22,10 @@ pub enum Error {
     JsonRpc(jsonrpc::error::Error),
     Hex(hex::Error),
     Json(serde_json::error::Error),
-    BitcoinSerialization(dashcore::consensus::encode::Error),
+    BitcoinSerialization(bitcoin::consensus::encode::Error),
     Secp256k1(secp256k1::Error),
     Io(io::Error),
-    InvalidAmount(dashcore::util::amount::ParseAmountError),
+    InvalidAmount(bitcoin::util::amount::ParseAmountError),
     InvalidCookieFile,
     /// The JSON result had an unexpected structure.
     UnexpectedStructure,
@@ -49,8 +49,8 @@ impl From<serde_json::error::Error> for Error {
     }
 }
 
-impl From<dashcore::consensus::encode::Error> for Error {
-    fn from(e: dashcore::consensus::encode::Error) -> Error {
+impl From<bitcoin::consensus::encode::Error> for Error {
+    fn from(e: bitcoin::consensus::encode::Error) -> Error {
         Error::BitcoinSerialization(e)
     }
 }
@@ -67,8 +67,8 @@ impl From<io::Error> for Error {
     }
 }
 
-impl From<dashcore::util::amount::ParseAmountError> for Error {
-    fn from(e: dashcore::util::amount::ParseAmountError) -> Error {
+impl From<bitcoin::util::amount::ParseAmountError> for Error {
+    fn from(e: bitcoin::util::amount::ParseAmountError) -> Error {
         Error::InvalidAmount(e)
     }
 }
@@ -91,7 +91,7 @@ impl fmt::Display for Error {
 
 impl error::Error for Error {
     fn description(&self) -> &str {
-        "dashcore-rpc error"
+        "bitcoincore-rpc error"
     }
 
     fn cause(&self) -> Option<&dyn error::Error> {
