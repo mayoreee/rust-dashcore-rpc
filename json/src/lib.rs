@@ -2367,6 +2367,16 @@ pub struct SelectQuorumResult {
     pub recovery_members: Vec<QuorumHash>
 }
 
+// --------------------------- BLS -------------------------------
+#[serde_as]
+#[derive(Clone, PartialEq, Eq, Debug, Deserialize, Serialize)]
+pub struct BLS {
+    #[serde_as(as = "Bytes")]
+    pub secret: Vec<u8>,
+    #[serde_as(as = "Bytes")]
+    pub public: Vec<u8>
+}
+
 
 // Custom deserializer functions.
 

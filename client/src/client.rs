@@ -1269,6 +1269,14 @@ pub trait RpcApi: Sized {
     }
 
 
+    // -------------------------- BLS -------------------------------
+
+    /// Parses a BLS secret key and returns the secret/public key pair
+    fn get_bls_fromsecret(&self, secret: &str) -> Result<json::BLS> {
+        let mut args = ["fromsecret".into(), into_json(secret)?];
+        self.call::<json::BLS>("bls", handle_defaults(&mut args, &[null()]))
+}
+
 }
 
 /// Client implements a JSON-RPC client for the Dash Core daemon or compatible APIs.
