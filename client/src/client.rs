@@ -1275,7 +1275,12 @@ pub trait RpcApi: Sized {
     fn get_bls_fromsecret(&self, secret: &str) -> Result<json::BLS> {
         let mut args = ["fromsecret".into(), into_json(secret)?];
         self.call::<json::BLS>("bls", handle_defaults(&mut args, &[null()]))
-}
+    }
+
+    /// Parses a BLS secret key and returns the secret/public key pair
+    fn get_bls_generate(&self) -> Result<json::BLS> {
+        self.call::<json::BLS>("bls", &["generate".into()])
+    }
 
 }
 

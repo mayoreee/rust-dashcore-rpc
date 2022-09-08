@@ -231,6 +231,7 @@ fn main() {
     test_get_quorum_selectquorum(&cl);
     test_get_quorum_verify(&cl);
     test_get_bls_fromsecret(&cl);
+    test_get_bls_generate(&cl);
 }
 
 fn test_get_network_info(cl: &Client) {
@@ -1248,4 +1249,10 @@ fn test_get_quorum_verify(cl: &Client) {
 
 fn test_get_bls_fromsecret(cl: &Client) {
     let bls_fromsecret = rpc.get_bls_fromsecret("52f35cd3d977a505485f2474e7e71ef3f60f859603d72ad6b0fa7f7bd163e144").unwrap();
+}
+
+fn test_get_bls_generate(cl: &Client) {
+    let bls_generate = rpc.get_bls_generate().unwrap();
+    assert!(bls_generate.secret[0] >= 0);
+    assert!(bls_generate.public[0] >= 0);
 }

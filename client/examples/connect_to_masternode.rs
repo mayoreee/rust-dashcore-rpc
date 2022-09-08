@@ -97,4 +97,8 @@ fn main() {
     // Get BLS fromsecret
     let bls_fromsecret = rpc.get_bls_fromsecret("52f35cd3d977a505485f2474e7e71ef3f60f859603d72ad6b0fa7f7bd163e144").unwrap();
     println!("\nBLS fromsecret: \n{:?}", bls_fromsecret);
+
+    // Get BLS generate
+    let bls_generate = rpc.get_bls_generate().unwrap();
+    println!("\nBLS generate: \n{:?}", bls_generate);
 }
