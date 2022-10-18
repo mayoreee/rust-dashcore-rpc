@@ -2448,8 +2448,7 @@ pub enum ProTxList{
 #[derive(Clone, PartialEq, Eq, Debug, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ProTxRegPrepare {
-    #[serde_as(as = "Bytes")]
-    pub tx: Vec<u8>,
+    pub tx: ProRegTxHash,
     #[serde_as(as = "Bytes")]
     pub collateral_address: Vec<u8>,
     #[serde_as(as = "Bytes")]

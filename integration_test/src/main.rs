@@ -235,6 +235,8 @@ fn main() {
     test_get_protx_list(&cl);
     test_get_protx_register(&cl);
     test_get_protx_register_fund(&cl);
+    test_get_protx_register_prepare(&cl);
+    test_get_protx_register_submit(&cl);
 }
 
 fn test_get_network_info(cl: &Client) {
@@ -1273,5 +1275,9 @@ fn test_get_protx_register_fund(cl: &Client) {
 }
 
 fn test_get_protx_register_prepare(cl: &Client) {
-    let protx_register = rpc.get_protx_register_prepare("df41e398bb245e973340d434d386f431dbd69735a575721b0b6833856e7d31ec", 1, "9.8.7.6:9876", "yemjhGQ99V5ayJMjoyGGPtxteahii6G1Jz", "06849865d01e4f73a6d5a025117e48f50b897e14235800501c8bfb8a6365cc8dbf5ddb67a3635d0f1dcc7d46a7ee280c", "yemjhGQ99V5ayJMjoyGGPtxteahii6G1Jz", 1.2, "yjJJLkYDUN6X8gWjXbCoKEXoiLeKxxMMRt", None).unwrap();
+    let protx_register_prepare = rpc.get_protx_register_prepare("df41e398bb245e973340d434d386f431dbd69735a575721b0b6833856e7d31ec", 1, "9.8.7.6:9876", "yemjhGQ99V5ayJMjoyGGPtxteahii6G1Jz", "06849865d01e4f73a6d5a025117e48f50b897e14235800501c8bfb8a6365cc8dbf5ddb67a3635d0f1dcc7d46a7ee280c", "yemjhGQ99V5ayJMjoyGGPtxteahii6G1Jz", 1.2, "yjJJLkYDUN6X8gWjXbCoKEXoiLeKxxMMRt", None).unwrap();
+}
+
+fn test_get_protx_register_submit(cl: &Client) {
+    let protx_register_submit = rpc.get_protx_register_prepare("03000100012d988526d5d1efd32320023c92eff09c2963dcb021b0de9761", "H90IvqVtFjZkwLJb08yMEgGixs0/FpcdvwImBcir4cYLJhD3pdX+lKD2GsPl6KNxghVXNk5/HpOdBoWAHo9u++Y=").unwrap();
 }

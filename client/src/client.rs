@@ -1307,6 +1307,13 @@ pub trait RpcApi: Sized {
         self.call::<json::ProTxRegPrepare>("protx", handle_defaults(&mut args, &[null()]))
     }
 
+    /// Combines the unsigned ProTx and a signature of the signMessage, signs all inputs which were added to 
+    /// cover fees and submits the resulting transaction to the network
+    fn get_protx_register_submit(&self, tx: &str, sig: &str) -> Result<json::ProRegTxHash> {
+        let mut args = ["register_submit".into(), into_json(tx)?, into_json(sig)?];
+        self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
+    }
+
 }
 
 /// Client implements a JSON-RPC client for the Dash Core daemon or compatible APIs.
