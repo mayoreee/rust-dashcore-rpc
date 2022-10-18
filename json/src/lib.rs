@@ -2444,6 +2444,18 @@ pub enum ProTxList{
     Info(Vec<ProTxInfo>)
 }
 
+#[serde_as]
+#[derive(Clone, PartialEq, Eq, Debug, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ProTxRegPrepare {
+    #[serde_as(as = "Bytes")]
+    pub tx: Vec<u8>,
+    #[serde_as(as = "Bytes")]
+    pub collateral_address: Vec<u8>,
+    #[serde_as(as = "Bytes")]
+    pub sign_message: Vec<u8>
+}
+
 // Custom deserializer functions.
 
 /// deserialize_hex_array_opt deserializes a vector of hex-encoded byte arrays.
