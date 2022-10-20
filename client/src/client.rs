@@ -1332,6 +1332,12 @@ pub trait RpcApi: Sized {
         self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
     }
 
+    /// Tests if a quorum signature is valid for a ChainLock
+    fn get_verifychainlock(&self, block_hash: &str, signature: &str, block_height: Option<u32>) -> Result<bool> {
+        let mut args = [into_json(block_hash)?, into_json(signature)?, opt_into_json(block_height)?];
+        self.call::<bool>("verifychainlock", handle_defaults(&mut args, &[null()]))
+    }
+
 
 }
 

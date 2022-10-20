@@ -240,6 +240,7 @@ fn main() {
     test_get_protx_revoke(&cl);
     test_get_protx_update_registrar(&cl);
     test_get_protx_update_service(&cl);
+    test_get_verifychainlock(&cl);
 }
 
 fn test_get_network_info(cl: &Client) {
@@ -1295,4 +1296,8 @@ fn test_get_protx_update_registrar(cl: &Client) {
 
 fn test_get_protx_update_service(cl: &Client) {
     let protx_update_service = rpc.get_protx_update_service("ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd", "4.3.2.1:4321", "4da7e1ea30fb9e55c73ad23df0b9d3d34342acb24facf4b19420e1a26ae272d1", None, None).unwrap();
+}
+
+fn test_get_verifychainlock(cl: &Client) {
+    let verifychainlock = rpc.get_verifychainlock( "00000036d5c520be6e9a32d3829efc983a7b5e88052bf138f80a2b3988689a24", "97ec34efd1615b84af62495e54024880752f57790cf450ae974b80002440963592d96826e24f109e6c149411b70bb9a0035443752368590adae60365cf4251464e0423c1263e9c56a33eae9be9e9c79a117151b2173bcee93497008cace8d793", None).unwrap();
 }
