@@ -2120,7 +2120,8 @@ pub struct BLS {
     #[serde_as(as = "Bytes")]
     pub secret: Vec<u8>,
     #[serde_as(as = "Bytes")]
-    pub public: Vec<u8>
+    pub public: Vec<u8>,
+}
     
 // --------------------------- Quorum -------------------------------
 
