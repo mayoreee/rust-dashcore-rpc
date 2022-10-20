@@ -1320,6 +1320,12 @@ pub trait RpcApi: Sized {
         self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
     }
 
+    /// Creates and sends a ProUpRegTx to the network
+    fn get_protx_update_registrat(&self, pro_tx_hash: &str, operator_pub_key: &str, voting_address: &str, payout_address: Option<&str>, fee_source_address: Option<&str>) -> Result<json::ProRegTxHash> {
+        let mut args = ["update_registrar".into(), into_json(pro_tx_hash)?, into_json(operator_pub_key)?, into_json(voting_address)?, opt_into_json(payout_address)?, opt_into_json(fee_source_address)?];
+        self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
+    }
+
 
 }
 
