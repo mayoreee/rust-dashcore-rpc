@@ -1338,6 +1338,12 @@ pub trait RpcApi: Sized {
         self.call::<bool>("verifychainlock", handle_defaults(&mut args, &[null()]))
     }
 
+    /// Tests  if a quorum signature is valid for an InstantSend Lock
+    fn get_verifyislock(&self, id: &str, tx_id: &str, signature: &str, max_height: Option<u32>) -> Result<bool> {
+        let mut args = [into_json(id)?, into_json(tx_id)?, into_json(signature)?, opt_into_json(max_height)?];
+        self.call::<bool>("verifyislock", handle_defaults(&mut args, &[null()]))
+    }
+
 
 }
 
