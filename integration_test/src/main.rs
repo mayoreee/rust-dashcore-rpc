@@ -239,6 +239,7 @@ fn main() {
     test_get_protx_register_submit(&cl);
     test_get_protx_revoke(&cl);
     test_get_protx_update_registrar(&cl);
+    test_get_protx_update_service(&cl);
 }
 
 fn test_get_network_info(cl: &Client) {
@@ -1290,4 +1291,8 @@ fn test_get_protx_revoke(cl: &Client) {
 
 fn test_get_protx_update_registrar(cl: &Client) {
     let protx_update_registrar = rpc.get_protx_update_registrar("ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd", "0e02146e9c34cfbcb3f3037574a1abb35525e2ca0c3c6901dbf82ac591e30218d1711223b7ca956edf39f3d984d06d51", "yX2cDS4kcJ4LK4uq9Hd4TG7kURV3sGLZrw", "yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7", None).unwrap();
+}
+
+fn test_get_protx_update_service(cl: &Client) {
+    let protx_update_service = rpc.get_protx_update_service("ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd", "4.3.2.1:4321", "4da7e1ea30fb9e55c73ad23df0b9d3d34342acb24facf4b19420e1a26ae272d1", None, None).unwrap();
 }
