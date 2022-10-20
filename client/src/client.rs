@@ -1314,6 +1314,13 @@ pub trait RpcApi: Sized {
         self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
     }
 
+    /// Creates and sends a ProUpRevTx to the network
+    fn get_protx_revoke(&self, pro_tx_hash: &str, operator_pub_key: &str, reason: u32, fee_source_address: Option<&str>) -> Result<json::ProRegTxHash> {
+        let mut args = ["revoke".into(), into_json(pro_tx_hash)?, into_json(operator_pub_key)?, into_json(reason)?, opt_into_json(fee_source_address)?];
+        self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
+    }
+
+
 }
 
 /// Client implements a JSON-RPC client for the Dash Core daemon or compatible APIs.

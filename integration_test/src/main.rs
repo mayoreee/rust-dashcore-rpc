@@ -237,6 +237,7 @@ fn main() {
     test_get_protx_register_fund(&cl);
     test_get_protx_register_prepare(&cl);
     test_get_protx_register_submit(&cl);
+    test_get_protx_revoke(&cl);
 }
 
 fn test_get_network_info(cl: &Client) {
@@ -1279,5 +1280,9 @@ fn test_get_protx_register_prepare(cl: &Client) {
 }
 
 fn test_get_protx_register_submit(cl: &Client) {
-    let protx_register_submit = rpc.get_protx_register_prepare("03000100012d988526d5d1efd32320023c92eff09c2963dcb021b0de9761", "H90IvqVtFjZkwLJb08yMEgGixs0/FpcdvwImBcir4cYLJhD3pdX+lKD2GsPl6KNxghVXNk5/HpOdBoWAHo9u++Y=").unwrap();
+    let protx_register_submit = rpc.get_protx_register_submit("03000100012d988526d5d1efd32320023c92eff09c2963dcb021b0de9761", "H90IvqVtFjZkwLJb08yMEgGixs0/FpcdvwImBcir4cYLJhD3pdX+lKD2GsPl6KNxghVXNk5/HpOdBoWAHo9u++Y=").unwrap();
+}
+
+fn test_get_protx_revoke(cl: &Client) {
+    let protx_revoke = rpc.get_protx_revoke("ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd", "4da7e1ea30fb9e55c73ad23df0b9d3d34342acb24facf4b19420e1a26ae272d1", 1, None).unwrap();
 }
