@@ -1308,7 +1308,7 @@ pub trait RpcApi: Sized {
     }
 
     /// Creates and funds a ProRegTx with the 1,000 DASH necessary for a masternode and then sends it to the network
-    fn get_protx_register_fund(&self, collateral_address: dashcore::Address, ip_and_port: &str, owner_address: dashcore::Address, operator_pub_key: &str, voting_address: dashcore::Address, operator_reward: u32, payout_address: dashcore::Address, fund_address: Option<dashcore::Addressr>, submit: Option<bool>) -> Result<json::ProRegTxHash> {
+    fn get_protx_register_fund(&self, collateral_address: dashcore::Address, ip_and_port: &str, owner_address: dashcore::Address, operator_pub_key: &str, voting_address: dashcore::Address, operator_reward: u32, payout_address: dashcore::Address, fund_address: Option<dashcore::Address>, submit: Option<bool>) -> Result<json::ProRegTxHash> {
         let mut args = ["register_fund".into(), into_json(collateral_address)?, into_json(ip_and_port)?, into_json(owner_address)?, into_json(operator_pub_key)?, into_json(voting_address)?, into_json(operator_reward)?, into_json(payout_address)?, opt_into_json(fund_address)?, opt_into_json(submit)?];
         self.call::<json::ProRegTxHash>("protx", handle_defaults(&mut args, &[null()]))
     }
